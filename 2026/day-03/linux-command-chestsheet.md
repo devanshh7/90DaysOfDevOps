@@ -10,7 +10,7 @@
 - diff A B : compare two files for differ Outputs the difference
 - mkdir: make directory is used to create a new folder
 - touch : is cmd used to create a new file
-- cp <source> <dest> && mv <S> <D>:  used to copy file from source to dest and same for move
+- cp [source] [dest] && mv [S] [D]:  used to copy file from source to dest and same for move
 - cp -r A B && mv -r A B : if you want to move or copy folder then we have to use -r before S -> D
 - rm <X> : it removes X permanently
 - rm -f X : forcibly remove file X witout prompt confirmation
