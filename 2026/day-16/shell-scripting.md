@@ -86,7 +86,7 @@ Prints appropriate message
 **File Check**
 <img width="823" height="376" alt="image" src="https://github.com/user-attachments/assets/597604c6-ca5d-49fb-b6c2-ef8713ec672d" />
 
-## Task 4: If-Else Conditions
+## Task 5: Combine It All- check server status
 [
 Stores a service name in a variable (e.g., nginx, sshd)
 
