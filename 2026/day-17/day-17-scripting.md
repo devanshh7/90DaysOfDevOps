@@ -64,7 +64,9 @@ done
 
 ### Task 5: Error Handling
 
+<img width="1139" height="998" alt="image" src="https://github.com/user-attachments/assets/c43c4965-6218-4894-ad82-df087c5b1393" />
 
+<img width="822" height="547" alt="image" src="https://github.com/user-attachments/assets/7e422a5e-0e4e-4c17-89be-3b8675346f5d" />
 
 
 ------------------------------
