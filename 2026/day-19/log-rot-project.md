@@ -335,6 +335,9 @@ fi
 
 Cron automatically runs scripts at specific times.
 
+
+*It's on your hand to whether use cron or not ,I have written how to run cron jon automatically 2AM Daily..*
+
 #### View cron jobs
 
 `crontab -l `
