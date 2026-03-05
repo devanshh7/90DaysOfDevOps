@@ -32,3 +32,15 @@
 | Backup directory | `tar -czvf backup.tar.gz /dir` | Create compressed backup |
 | Extract tar archive | `tar -xzvf backup.tar.gz` | Restore backup |
 | Check service status | `systemctl status nginx` | Verify service state |
+
+
+-----------------------------------
+
+**Powerful Pipelines**
+```
+ps aux | grep process
+du -ah | sort -rh | head
+awk '{print $1}' file | sort | uniq -c
+tail -f log | grep ERROR
+find . -type f -mtime +7
+```
