@@ -1,4 +1,6 @@
-<img width="949" height="875" alt="image" src="https://github.com/user-attachments/assets/9743d316-b1ad-49f2-a91e-17b0ec01140d" /># Dockerfile Practice Progress Tracker
+<img width="949" height="875" alt="image" src="https://github.com/user-attachments/assets/9743d316-b1ad-49f2-a91e-17b0ec01140d" />
+
+# Dockerfile Practice Progress Tracker
 
 # Section 1 — Dockerfile Basics
 
@@ -11,13 +13,13 @@ Goal: Build a custom image using Ubuntu and print a message.
 ### Steps
 
 * [x] Create project folder `my-first-image`
-* [ ] Create a `Dockerfile`
-* [ ] Use `ubuntu` as base image
-* [ ] Install `curl`
-* [ ] Add default command printing message
-* [ ] Build image `my-ubuntu:v1`
-* [ ] Run container from image
-* [ ] Verify message prints
+* [x] Create a `Dockerfile`
+* [x] Use `ubuntu` as base image
+* [x] Install `curl`
+* [x] Add default command printing message
+* [x] Build image `my-ubuntu:v1`
+* [x] Run container from image
+* [x] Verify message prints
 
 ### Example Dockerfile
 
