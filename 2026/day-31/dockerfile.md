@@ -277,7 +277,14 @@ When to use CMD:
 When to use ENTRYPOINT:
 ```
 
+ENTRYPOINT and CMD are similar but separate instructions that complement each other:
 
+ENTRYPOINT is the process executed inside the container.
+CMD is the default set of arguments supplied to the ENTRYPOINT process.
+There are also differences in how you override these values when you start a container:
+
+CMD is easily overridden by appending your own arguments to the docker run command.
+ENTRYPOINT can be changed using the --entrypoint flag. However, this should rarely be necessary for container images if they are used in the way intended. If you do change the ENTRYPOINT, you’ll almost certainly need to set a custom CMD too. Otherwise, your new ENTRYPOINT is likely to receive arguments it doesn’t understand.
 
 ---
 
@@ -309,12 +316,15 @@ COPY index.html /usr/share/nginx/html/
 
 EXPOSE 80
 ```
+<img width="727" height="123" alt="image" src="https://github.com/user-attachments/assets/aba4427f-2750-4fde-aae4-033f0152b611" />
+
 
 ### Build
 
 ```
 docker build -t my-website:v1 .
 ```
+<img width="836" height="419" alt="image" src="https://github.com/user-attachments/assets/19c02d0d-119d-447e-9c99-0789e2f0ffde" />
 
 ### Run
 
@@ -329,12 +339,14 @@ Open browser:
 ```
 http://localhost:8080
 ```
+<img width="1919" height="1005" alt="image" src="https://github.com/user-attachments/assets/fcb7c3e4-9046-42fc-8f80-7782605fcc7e" />
 
 ### Notes
 
 ```
 Add screenshots or observations
 ```
+<img width="949" height="875" alt="image" src="https://github.com/user-attachments/assets/fb541f25-d1a1-4b99-8fcd-74f9f426ace0" />
 
 ---
 
