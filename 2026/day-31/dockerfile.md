@@ -136,6 +136,57 @@ d<img width="941" height="280" alt="image" src="https://github.com/user-attachme
 ```
 Your explanation of each instruction
 ```
+FROM
+
+Defines the base image.
+This tells Docker to start from the Ubuntu image.
+
+RUN
+
+Executes commands during image build.
+
+COPY
+
+Copies files from host machine → Docker image.
+
+WORKDIR
+
+Sets the working directory inside the container.
+
+Example:
+
+WORKDIR /app
+
+All subsequent commands run from this directory.
+
+
+EXPOSE
+
+Documents which port the container will use.
+
+Example:
+
+EXPOSE 5000
+
+This does not publish the port, but informs users.
+
+CMD
+
+Defines the default command executed when the container starts.
+
+Example:
+
+CMD ["python3", "-m", "http.server", "5000"]
+
+This runs a simple Python web server.
+
+docker ps
+<img width="901" height="569" alt="image" src="https://github.com/user-attachments/assets/ebfbbf93-97c2-4563-87f8-5d38bccdc4c3" />
+
+
+<img width="905" height="273" alt="image" src="https://github.com/user-attachments/assets/c77376e9-acdd-4919-bb29-153686d7adba" />
+
+<img width="1905" height="627" alt="image" src="https://github.com/user-attachments/assets/9b88e3c5-0b90-4967-9f61-4db26e2d7242" />
 
 ---
 
@@ -156,6 +207,7 @@ Run:
 ```
 docker run cmd-test
 ```
+<img width="882" height="403" alt="image" src="https://github.com/user-attachments/assets/76651d24-1924-4bf4-ae6c-c05f8b87bf2b" />
 
 Override command:
 
@@ -163,11 +215,19 @@ Override command:
 docker run cmd-test ls
 ```
 
+```
+docker run cmd-test echo hii
+```
+<img width="782" height="43" alt="image" src="https://github.com/user-attachments/assets/6488d66d-a2ec-48ca-8c85-445d924b9c7d" />
+
 ### Observation
 
 ```
 Write what happens when CMD is overridden
 ```
+
+Firstly when we make dockerfile and run it <FROM ubuntu
+CMD ["echo", "hello"]> it runs and prints hello but when we give custom command like <docker run test-cmd echo hiii> then it prints hii instead of hello.
 
 ---
 
@@ -180,8 +240,13 @@ FROM ubuntu
 
 ENTRYPOINT ["echo"]
 ```
+<img width="307" height="173" alt="image" src="https://github.com/user-attachments/assets/d8f1e3a4-477f-4faa-ba78-a92fc3b979d2" />
 
 Run:
+
+Without argument:
+<img width="1055" height="374" alt="image" src="https://github.com/user-attachments/assets/9cf13b02-f9a7-4141-a668-888f1b398490" />
+
 
 ```
 docker run entrypoint-test hello
@@ -192,12 +257,15 @@ Run with extra argument:
 ```
 docker run entrypoint-test world
 ```
+<img width="840" height="90" alt="image" src="https://github.com/user-attachments/assets/9c1f4856-24f3-44e3-940b-b8d6e6873ebd" />
+
 
 ### Observation
 
 ```
 Write what happens when arguments are added
 ```
+When arguments are given the echo command is running else it is printing blank.
 
 ---
 
@@ -208,6 +276,8 @@ When to use CMD:
 
 When to use ENTRYPOINT:
 ```
+
+
 
 ---
 
