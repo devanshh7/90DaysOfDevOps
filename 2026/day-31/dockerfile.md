@@ -1,4 +1,4 @@
-# Dockerfile Practice Progress Tracker
+<img width="949" height="875" alt="image" src="https://github.com/user-attachments/assets/9743d316-b1ad-49f2-a91e-17b0ec01140d" /># Dockerfile Practice Progress Tracker
 
 # Section 1 — Dockerfile Basics
 
@@ -354,6 +354,28 @@ Add screenshots or observations
 
 Create a `.dockerignore` file.
 
+_`.dockerignore` prevents unnecessary files from being sent to the Docker build context.
+
+Benefits:
+
+Smaller image size
+
+Faster builds
+
+Better security
+
+Example:
+
+If your project has:
+
+```
+node_modules/
+.git/
+.env
+README.md
+```
+These files will not be included in the image._
+
 ### Example
 
 ```
@@ -375,7 +397,12 @@ node_modules
 ```
 What files were excluded?
 ```
-
+```
+node_modules/
+.git/
+.env
+README.md
+```
 ---
 
 # Task 6 — Build Optimization
@@ -419,6 +446,20 @@ COPY . .
 ```
 Write your explanation here
 ```
+Docker builds images top to bottom.
+
+Best practice:
+
+1️⃣ Install dependencies (rarely changes)
+2️⃣ Copy source code (changes frequently)
+
+This ensures:
+
+Faster rebuilds
+
+Better caching
+
+Efficient CI/CD pipelines 
 
 ---
 
