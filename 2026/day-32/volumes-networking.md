@@ -110,9 +110,12 @@ docker exec -it postgres-vol psql -U postgres
 ```
 
 ```sql
-CREATE TABLE test_data (name TEXT);
-INSERT INTO test_data VALUES ('Docker Volume');
-SELECT * FROM test_data;
+CREATE TABLE test_data (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(50)
+);
+
+INSERT INTO test_data (name) VALUES ('Docker Volume');
 ```
 
 ### Remove Container
@@ -125,15 +128,18 @@ docker rm postgres-vol
 ### Run New Container Using Same Volume
 
 ```bash
-docker run --name postgres-vol2 \
--e POSTGRES_PASSWORD=admin \
--v postgres-data:/var/lib/postgresql/data \
--d postgres
+docker run --name mysql-vol2 \
+-e MYSQL_ROOT_PASSWORD=admin \
+-v mysql-data:/var/lib/postgresql/data \
+-d mysql:8
 ```
+<img width="1077" height="417" alt="image" src="https://github.com/user-attachments/assets/72c5fffa-3354-4d8d-b389-bbe3450ed9a7" />
 
 ### Result
 
 The data **still exists** because it is stored in the **Docker volume**.
+
+<img width="876" height="850" alt="image" src="https://github.com/user-attachments/assets/81abd71b-54ec-453d-a29b-54416c8c82e2" />
 
 ### Verify Volume
 
@@ -142,8 +148,9 @@ docker volume ls
 ```
 
 ```bash
-docker volume inspect postgres-data
+docker volume inspect mysql-data
 ```
+<img width="715" height="154" alt="image" src="https://github.com/user-attachments/assets/f56a9157-0d88-4e0b-85e2-ea2ecfe46e10" />
 
 ---
 
