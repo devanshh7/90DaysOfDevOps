@@ -121,8 +121,8 @@ INSERT INTO test_data (name) VALUES ('Docker Volume');
 ### Remove Container
 
 ```bash
-docker stop postgres-vol
-docker rm postgres-vol
+docker stop mysql-vol2
+docker rm mysql-vol2
 ```
 
 ### Run New Container Using Same Volume
@@ -179,7 +179,7 @@ Example content:
 
 ```bash
 docker run -d \
--p 8080:80 \
+-p 8000:80 \
 -v $(pwd):/usr/share/nginx/html \
 --name nginx-bind \
 nginx
@@ -190,8 +190,13 @@ Open browser:
 ```
 http://localhost:8080
 ```
+<img width="1900" height="595" alt="image" src="https://github.com/user-attachments/assets/a356bb20-26b2-4be6-bbaa-6f46b791a857" />
 
 Edit `index.html` and refresh the page — changes appear instantly.
+
+<img width="758" height="353" alt="image" src="https://github.com/user-attachments/assets/32c0cc3c-0564-4f39-8e12-216870bd2d73" />
+
+<img width="1802" height="503" alt="image" src="https://github.com/user-attachments/assets/4722ca8f-c388-4e9e-9cb6-5cd49e5d7504" />
 
 ### Difference Between Named Volume and Bind Mount
 
@@ -210,6 +215,7 @@ Edit `index.html` and refresh the page — changes appear instantly.
 ```bash
 docker network ls
 ```
+<img width="618" height="121" alt="image" src="https://github.com/user-attachments/assets/a3972eda-553c-4d79-802a-c15e27c415d9" />
 
 Default networks include:
 
@@ -224,6 +230,7 @@ none
 ```bash
 docker network inspect bridge
 ```
+<img width="831" height="413" alt="image" src="https://github.com/user-attachments/assets/b79562db-6270-4d8d-827d-18c07afbc547" />
 
 ### Run Two Containers
 
@@ -255,6 +262,7 @@ docker exec -it container1 ping <container-ip>
 Result: **Success**
 
 ---
+<img width="760" height="465" alt="image" src="https://github.com/user-attachments/assets/a0ef0c26-1fb4-4913-986a-52738d7be192" />
 
 # Task 5 – Custom Networks
 
@@ -270,12 +278,14 @@ docker network create my-app-net
 docker run -dit --name app1 --network my-app-net ubuntu
 docker run -dit --name app2 --network my-app-net ubuntu
 ```
+<img width="947" height="229" alt="image" src="https://github.com/user-attachments/assets/89a5c41e-bd2e-46f1-a8f5-8f3c0451e1db" />
 
 ### Test Communication
 
 ```bash
 docker exec -it app1 ping app2
 ```
+<img width="724" height="340" alt="image" src="https://github.com/user-attachments/assets/a5509c0a-707e-4e83-a62c-9b6ae0159cd2" />
 
 Result: **Success**
 
@@ -294,6 +304,7 @@ Container names automatically resolve to container IP addresses.
 ```bash
 docker network create app-network
 ```
+<img width="660" height="47" alt="image" src="https://github.com/user-attachments/assets/737453b3-bc8a-47df-b4fa-d1e3cb673dcd" />
 
 ### Create Volume
 
@@ -311,18 +322,45 @@ docker run -d \
 -v db-data:/var/lib/mysql \
 mysql
 ```
+<img width="932" height="522" alt="image" src="https://github.com/user-attachments/assets/95998707-6d2f-4b16-8c9e-9ab34ed3776c" />
 
 ### Run Application Container
 
+Why Another Container Is Needed
+
+To test Docker networking we need two containers.
+
+- Think of it like this:
+
+`Application → Database`
+
+- Example in real systems:
+
+`Backend API → MySQL database`
+
+- So we create another container that represents an application container.
+
+`app-client`
+
 ```bash
-docker run -it --network app-network ubuntu bash
+docker run -it \
+--name app-client \
+--network devops-net \
+ubuntu bash
 ```
+
+<img width="621" height="517" alt="image" src="https://github.com/user-attachments/assets/a0e9485c-e20d-4d81-8589-87ec589ffa32" />
 
 ### Test Connectivity
 
 ```bash
 ping mysql-db
 ```
+<img width="822" height="287" alt="image" src="https://github.com/user-attachments/assets/7b9ea057-6360-4416-a110-f6dc0d6ab3ac" />
+
+Inside `devops-net` network we can see inside container : "mysql-server" is there inside the network.
+
+<img width="976" height="817" alt="image" src="https://github.com/user-attachments/assets/125daf38-f8fe-4b09-8e0e-3493a500f0fd" />
 
 The application container successfully reaches the database using the **container name**.
 
