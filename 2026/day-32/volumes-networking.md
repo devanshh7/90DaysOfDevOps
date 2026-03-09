@@ -18,34 +18,44 @@ Docker volumes and networking solve this problem.
 ### Run a PostgreSQL Container
 
 ```bash
-docker run --name postgres-test \
--e POSTGRES_PASSWORD=admin \
--d postgres
+docker run --name mysql-test \
+-e MYSQL_ROOT_PASSWORD=admin \
+-d mysql:8
 ```
+<img width="849" height="360" alt="image" src="https://github.com/user-attachments/assets/bc25d357-36b7-4613-a1d7-c9ff88d5fc49" />
 
 ### Enter the Container
 
-```bash
-docker exec -it postgres-test psql -U postgres
 ```
+docker exec -it mysql-test mysql -u root -p
+
+Enter password:
+admin
+```
+<img width="795" height="333" alt="image" src="https://github.com/user-attachments/assets/2e99f09c-73f7-4021-86a2-86b3f7e9bbed" />
 
 ### Create Sample Data
 
+```
+CREATE DATABASE devops_db;
+USE devops_db;
+```
+
 ```sql
 CREATE TABLE students (
-id SERIAL PRIMARY KEY,
-name TEXT
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(50)
 );
 
 INSERT INTO students (name) VALUES ('Devansh'), ('Docker');
-SELECT * FROM students;
 ```
+<img width="726" height="545" alt="image" src="https://github.com/user-attachments/assets/85448bac-cf16-40ad-aa36-1d574533867c" />
 
 ### Stop and Remove Container
 
 ```bash
-docker stop postgres-test
-docker rm postgres-test
+docker stop mysql-test
+docker rm mysql-test
 ```
 
 ### Run a New Container
@@ -56,6 +66,9 @@ docker run --name postgres-test \
 -d postgres
 ```
 
+<img width="924" height="516" alt="image" src="https://github.com/user-attachments/assets/d43705a8-babb-4c2f-9c8e-5374e9ea348a" />
+
+Here we can see `devops_db` is gone , no such database was there.
 ### Observation
 
 The table and inserted data were **lost**.
