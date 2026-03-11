@@ -236,6 +236,18 @@ networks:
 
 ```
 
+**IMPORTANT**
+
+Simple rule
+
+Variable	Must Match
+
+WORDPRESS_DB_USER	MYSQL_USER
+
+WORDPRESS_DB_PASSWORD	MYSQL_PASSWORD
+
+WORDPRESS_DB_NAME	MYSQL_DATABASE
+
 **Output**
 <img width="764" height="359" alt="image" src="https://github.com/user-attachments/assets/191b0486-203f-423a-8b47-0631ce810fa4" />
 
@@ -258,6 +270,99 @@ Rebuild images if you make a change
 
 ```
 
+| Command                         | Purpose / Meaning                            |
+| ------------------------------- | -------------------------------------------- |
+| `docker compose up`             | Starts all services defined in compose file. |
+| `docker compose up -d`          | Runs containers in background.               |
+| `docker compose ps`             | Shows status of compose services.            |
+| `docker compose logs`           | Shows logs for all services.                 |
+| `docker compose logs -f`        | Streams logs in real-time.                   |
+| `docker compose logs <service>` | Shows logs for a specific service.           |
+| `docker compose stop`           | Stops containers without removing them.      |
+| `docker compose restart`        | Restarts services.                           |
+| `docker compose down`           | Stops and removes containers and networks.   |
+| `docker compose down -v`        | Removes containers, networks, and volumes.   |
+| `docker compose up --build`     | Rebuilds images before starting containers.  |
 
 
 ------
+
+### Task 5: Environment Variables
+
+Environment variables help store **configuration separately from code**.
+
+---
+
+## Using Variables in Compose File
+
+```yaml
+environment:
+  MYSQL_ROOT_PASSWORD: rootpass
+```
+
+---
+
+## Using `.env` File
+
+Create a `.env` file:
+
+```
+MYSQL_ROOT_PASSWORD=rootpass
+MYSQL_DATABASE=wordpress
+MYSQL_USER=wpuser
+MYSQL_PASSWORD=wppass
+```
+
+Update compose file:
+
+```yaml
+environment:
+  MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+```
+
+---
+
+### Verify Variables Inside Container
+
+| Command                                | Purpose / Meaning                                    |
+| -------------------------------------- | ---------------------------------------------------- |
+| `docker exec -it <container-name> env` | Displays environment variables inside the container. |
+
+---
+
+# Key Concepts Learned
+
+| Concept               | Explanation                                                               |
+| --------------------- | ------------------------------------------------------------------------- |
+| Docker Compose        | Tool used to manage multi-container applications with a single YAML file. |
+| Services              | Containers defined in the compose file.                                   |
+| Networks              | Compose automatically creates a network for services to communicate.      |
+| Volumes               | Used to persist data even if containers are removed.                      |
+| Service Names         | Containers communicate using service names instead of IP addresses.       |
+| Environment Variables | Used for secure and flexible configuration management.                    |
+
+---
+
+# Project Structure
+
+```
+compose-basics
+│
+├── docker-compose.yml
+├── .env
+└── day-33-compose.md
+```
+
+---
+
+# Outcome
+
+By completing this task I learned:
+
+* How to run **multi-container applications using Docker Compose**
+* How **containers communicate using service names**
+* How to **persist data using Docker volumes**
+* How to manage services using **Compose commands**
+* How to configure applications using **environment variables**
+
+Docker Compose is widely used in **development, testing environments, and microservice architectures** because it simplifies infrastructure setup and management
