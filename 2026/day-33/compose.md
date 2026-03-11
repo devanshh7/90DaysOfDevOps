@@ -253,6 +253,10 @@ WORDPRESS_DB_NAME	MYSQL_DATABASE
 
 <img width="752" height="414" alt="image" src="https://github.com/user-attachments/assets/e7864eef-d601-4449-a5c9-b38f739e47b9" />
 
+_website:_
+
+<img width="1904" height="981" alt="image" src="https://github.com/user-attachments/assets/dcdfb5eb-cc17-4e02-a261-a375b523c6c8" />
+
 
 
 ------
