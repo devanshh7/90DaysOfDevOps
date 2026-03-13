@@ -1,4 +1,4 @@
-# Docker Compose: Real-World Multi-Container Apps
+# Docker Compose: Real-World Multi-Container Apps 
 -----------------------
 ### Task 1 — Build Your Own App Stack
 **Goal**
@@ -10,6 +10,8 @@ Create a 3-service stack:
 3️⃣ Redis cache
 
 This simulates real production architecture.
+
+****
 
 
 ```
