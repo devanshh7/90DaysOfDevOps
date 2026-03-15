@@ -14,16 +14,54 @@ We’ll build a **complete production-style project from scratch like a full-sta
 
 This will include:
 
-Frontend → simple UI (served by Nginx)
+* **Frontend** → simple UI (served by Nginx)
 
-Backend API → Node.js + Express
+* **Backend API** → Node.js + Express
 
-Database → MongoDB
+* **Database** → MongoDB
 
-Reverse Proxy → Nginx
+* **Reverse Proxy** → Nginx
 
-Containers → Docker
+* **Containers** → Docker
 
-Orchestration → Docker Compose
+* **Orchestration** → Docker Compose
 
-By the end you will have a real full-stack Dockerized application you can push to GitHub and Docker Hub.
+By the end you will have a **real full-stack Dockerized application** you can push to GitHub and Docker Hub.
+
+----------------------------
+
+### Project Architecture
+
+![alt text](images/image.png)
+
+-------------
+
+## STEP 1 — Create Project Folder
+
+- Create the project directory.
+
+```
+mkdir docker-fullstack-app
+cd docker-fullstack-app
+```
+
+- Create folders.
+  
+```
+mkdir backend
+mkdir nginx
+mkdir frontend
+```
+
+- Project Structure:
+  
+```
+docker-fullstack-app
+│
+├── backend
+├── frontend
+├── nginx
+├── docker-compose.yml
+├── .env
+└── README.md
+```
