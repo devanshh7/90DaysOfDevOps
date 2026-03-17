@@ -308,6 +308,8 @@ nginx_server
 
 `docker build -t yourusername/docker-backend ./backend`
 
+<img width="887" height="382" alt="image" src="https://github.com/user-attachments/assets/1efb17de-c1f9-4ea0-a2da-8673b87be312" />
+
 - Tag image:
 
 `docker tag yourusername/docker-backend yourusername/docker-backend:v1`
@@ -315,4 +317,10 @@ nginx_server
 - Push Image:
 
 `docker push yourusername/docker-backend:v1`
+
+<img width="1087" height="268" alt="image" src="https://github.com/user-attachments/assets/8cadc9da-8f1a-4647-9595-fe8ce1274d6f" />
+
+**Updated Docker-compose.yml**
+
+<img width="754" height="637" alt="image" src="https://github.com/user-attachments/assets/2d478381-b938-4538-9b05-a9a9d50bf2eb" />
 
