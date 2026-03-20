@@ -1,0 +1,26 @@
+server:
+  name: web-01
+  ip: 192.168.1.10
+  port: 8080
+
+database:
+  host: localhost
+  name: myapp_db
+  credentials:
+    user: admin
+    password: changeme123
+
+# Block style — | preserves newlines exactly as written
+startup_script: |
+  #!/bin/bash
+  echo "Starting server..."
+  apt-get update -y
+  apt-get install -y nginx
+  systemctl start nginx
+  echo "Done."
+
+# Fold style — > collapses newlines into spaces (one long line)
+server_description: >
+  This is a web server running nginx.
+  It handles all incoming HTTP traffic
+  and proxies requests to the app tier.
