@@ -1,0 +1,16 @@
+# This is person.yml that describes myself  :-
+
+Name: Devansh Sharma
+Role: Devops Engineer/SRE
+experience_years: 1
+learning: True
+
+tools:
+  - Docker
+  - kubernetes
+  - terraform
+  - ansible
+  - jenkins
+  - shell scripting
+  
+hobbies: [coding, reading, hiking, gaming, cooking]
