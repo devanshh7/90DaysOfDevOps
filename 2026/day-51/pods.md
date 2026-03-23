@@ -52,6 +52,8 @@ spec:
     ports:
     - containerPort: 80
 ```
+![k8s_pod_manifest_anatomy](https://github.com/user-attachments/assets/6a2b275e-2e4b-48c3-81c5-7fc6ddc9d90e)
+
 
 **Commands run:**
 
