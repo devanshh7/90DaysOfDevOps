@@ -56,12 +56,22 @@ spec:
 **Commands run:**
 
 ```bash
+#Apply it:
 kubectl apply -f nginx-pod.yaml
+
+Verify:
 kubectl get pods
 kubectl get pods -o wide
+
+# Detailed info about the pod
 kubectl describe pod nginx-pod
+
 kubectl logs nginx-pod
+kubectl logs nginx-pod
+
+# Get a shell inside the container
 kubectl exec -it nginx-pod -- /bin/bash
+
 # Inside the container:
 curl localhost:80
 exit
