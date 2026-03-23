@@ -66,7 +66,7 @@ kubectl get pods -o wide
 # Detailed info about the pod
 kubectl describe pod nginx-pod
 
-kubectl logs nginx-pod
+#Read the logs
 kubectl logs nginx-pod
 
 # Get a shell inside the container
@@ -76,6 +76,15 @@ kubectl exec -it nginx-pod -- /bin/bash
 curl localhost:80
 exit
 ```
+<img width="718" height="416" alt="image" src="https://github.com/user-attachments/assets/f8bc31a1-c2ff-415f-90a2-856d841353d6" />
+
+<img width="722" height="147" alt="image" src="https://github.com/user-attachments/assets/5bd567dd-927e-4d63-8d85-1853ef171c2d" />
+
+<img width="716" height="360" alt="image" src="https://github.com/user-attachments/assets/93b20fa8-8838-46d4-802f-8aefe1805d1b" />
+
+<img width="719" height="340" alt="image" src="https://github.com/user-attachments/assets/828a1f5b-9eac-4312-8731-4c5946d2ca8e" />
+
+
 
 **Verification:** Running `curl localhost:80` from inside the container returned the Nginx welcome page HTML, confirming the container was serving traffic correctly.
 
@@ -103,12 +112,14 @@ spec:
 ```
 
 **Commands run:**
+<img width="704" height="398" alt="image" src="https://github.com/user-attachments/assets/de723e34-754d-49e1-ab22-f8b0fb600495" />
 
 ```bash
 kubectl apply -f busybox-pod.yaml
 kubectl get pods
 kubectl logs busybox-pod
 ```
+<img width="683" height="164" alt="image" src="https://github.com/user-attachments/assets/60c28241-934f-4038-ad62-a24c8b9d300e" />
 
 **Verification:** `kubectl logs busybox-pod` printed:
 
@@ -133,12 +144,14 @@ Write YAML → `kubectl apply -f file.yaml` → Kubernetes reconciles the desire
 kubectl run redis-pod --image=redis:latest
 kubectl get pods
 ```
+<img width="729" height="148" alt="image" src="https://github.com/user-attachments/assets/08d8b644-e4cf-4cff-b1d2-39d3a88a31e2" />
 
 ### Inspecting the generated YAML
 
 ```bash
 kubectl get pod redis-pod -o yaml
 ```
+<img width="1009" height="895" alt="image" src="https://github.com/user-attachments/assets/288ae812-5477-4407-939f-88802b711b82" />
 
 Kubernetes automatically adds extra fields that don't appear in hand-written manifests:
 
@@ -157,6 +170,8 @@ This generates a valid manifest without creating any resource. Useful for quickl
 
 **Key difference:** A hand-written manifest has only the 4 required fields. The Kubernetes-generated YAML includes a full `status` block and many auto-populated metadata fields.
 
+<img width="894" height="522" alt="image" src="https://github.com/user-attachments/assets/07377557-0f94-4602-9657-58b3b9df4456" />
+
 ---
 
 ## Task 4 — Validate before applying
@@ -168,6 +183,7 @@ kubectl apply -f nginx-pod.yaml --dry-run=client
 # Server-side schema validation (hits the API)
 kubectl apply -f nginx-pod.yaml --dry-run=server
 ```
+<img width="732" height="116" alt="image" src="https://github.com/user-attachments/assets/988b2dcd-4072-413b-a929-945b546350da" />
 
 ### Breaking the manifest deliberately
 
@@ -178,7 +194,7 @@ kubectl apply -f nginx-pod.yaml --dry-run=server
 ```
 
 **Error received:**
-
+<img width="758" height="77" alt="image" src="https://github.com/user-attachments/assets/f7d95bbe-8046-42ec-92de-188389de9d62" />
 ```
 The Pod "nginx-pod" is invalid:
 spec.containers[0].image: Required value
@@ -215,6 +231,7 @@ kubectl get pods --show-labels
 # Remove a label (note the trailing dash)
 kubectl label pod nginx-pod environment-
 ```
+<img width="810" height="481" alt="image" src="https://github.com/user-attachments/assets/f9ca43dc-df6e-46d7-b16d-56cbbda59dfc" />
 
 ### Third Pod with 3+ labels
 
@@ -235,6 +252,7 @@ spec:
     image: alpine:latest
     command: ["sleep", "3600"]
 ```
+<img width="452" height="385" alt="image" src="https://github.com/user-attachments/assets/328f91e1-c710-4bfe-a061-148441d436d7" />
 
 ```bash
 kubectl apply -f multi-label-pod.yaml
@@ -244,6 +262,7 @@ kubectl get pods -l team=backend
 kubectl get pods -l environment=staging
 kubectl get pods -l app=myapp
 ```
+<img width="731" height="149" alt="image" src="https://github.com/user-attachments/assets/5c6751da-2856-4927-9805-36379ed6b510" />
 
 **Key insight:** Labels are just key-value pairs. They have no meaning to Kubernetes itself — only to selectors (used by Services, Deployments, etc. to find the right Pods).
 
@@ -266,6 +285,7 @@ kubectl get pods
 ```
 
 **Output:**
+<img width="694" height="167" alt="image" src="https://github.com/user-attachments/assets/bd78dd75-e290-4072-bdc8-35b2ff5c1fac" />
 
 ```
 No resources found in default namespace.
