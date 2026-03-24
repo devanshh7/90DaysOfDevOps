@@ -12,6 +12,8 @@ Today I learned how Kubernetes uses namespaces to isolate resources, and how Dep
 
 A namespace is a virtual cluster inside your physical cluster. Resources in one namespace are isolated from resources in another. Use them to separate environments (dev, staging, production) or teams.
 
+![k8s_namespaces_deployments_architecture](https://github.com/user-attachments/assets/39112610-c77d-4df1-abe4-15ddbb383fbc)
+
 ```
 kubectl get namespaces
 ```
@@ -72,6 +74,7 @@ kubectl create namespace dev
 kubectl create namespace staging
 kubectl get namespaces
 ```
+<img width="598" height="232" alt="image" src="https://github.com/user-attachments/assets/ed73284d-01fc-49d5-9022-f378625bc5c9" />
 
 ### Declarative creation (from manifest)
 
@@ -83,10 +86,12 @@ kind: Namespace
 metadata:
   name: production
 ```
+<img width="306" height="319" alt="image" src="https://github.com/user-attachments/assets/b85d2a63-7b3c-4a86-ac2d-6d8c529df8c8" />
 
 ```bash
 kubectl apply -f namespace.yaml
 ```
+<img width="456" height="176" alt="image" src="https://github.com/user-attachments/assets/b2f2d3ae-c451-43bd-b66c-be1cdaf8e396" />
 
 ### Deploy pods into specific namespaces
 
@@ -94,8 +99,11 @@ kubectl apply -f namespace.yaml
 kubectl run nginx-dev --image=nginx:latest -n dev
 kubectl run nginx-staging --image=nginx:latest -n staging
 ```
+<img width="876" height="517" alt="image" src="https://github.com/user-attachments/assets/5188b65c-f941-483e-aee7-60d9d03df788" />
 
 ### Listing pods across namespaces
+
+<img width="563" height="116" alt="image" src="https://github.com/user-attachments/assets/56993c0a-7d36-4cc7-a278-82b27947eeef" />
 
 ```bash
 # Only shows default namespace — these pods won't appear here
@@ -140,6 +148,9 @@ spec:
         ports:
         - containerPort: 80
 ```
+<img width="440" height="397" alt="image" src="https://github.com/user-attachments/assets/4bbe0f5e-e6c6-4cbf-bd9f-254b9b11047e" />
+
+<img width="653" height="185" alt="image" src="https://github.com/user-attachments/assets/9fdaf114-017d-48df-bdd2-818544741a9d" />
 
 ### Key differences from a standalone Pod
 
@@ -159,6 +170,7 @@ kubectl get deployments -n dev
 kubectl get pods -n dev
 kubectl get replicasets -n dev
 ```
+<img width="654" height="125" alt="image" src="https://github.com/user-attachments/assets/f3474c0c-0e8d-48ed-90c7-ed02f700123f" />
 
 ### Understanding the Deployment output columns
 
@@ -184,6 +196,7 @@ kubectl delete pod <pod-name-here> -n dev
 # Immediately check again
 kubectl get pods -n dev
 ```
+<img width="725" height="236" alt="image" src="https://github.com/user-attachments/assets/9876fae6-2320-4003-89b3-4b9f3cb38ed3" />
 
 **What happened:** The Deployment controller noticed only 2 of 3 desired replicas existed. It immediately created a replacement pod. The new pod has a completely different randomly generated name — it is a brand new pod, not the same one restarted.
 
@@ -206,6 +219,7 @@ kubectl get pods -n dev
 kubectl scale deployment nginx-deployment --replicas=2 -n dev
 kubectl get pods -n dev
 ```
+<img width="760" height="348" alt="image" src="https://github.com/user-attachments/assets/976f8388-ee29-4082-84c6-25cd419e39ba" />
 
 **When scaling down:** Kubernetes terminates pods (newest first) until the count matches. Terminated pods show `Terminating` status briefly, then disappear entirely.
 
@@ -217,8 +231,11 @@ Edit `replicas:` in `nginx-deployment.yaml` and re-apply:
 # Change replicas: 3 to replicas: 4 in the file, then:
 kubectl apply -f nginx-deployment.yaml
 ```
+<img width="453" height="406" alt="image" src="https://github.com/user-attachments/assets/a0bed466-15af-415e-8614-80723c0b935a" />
 
 **Verify:** After scaling down from 5 to 2, the 3 extra pods were terminated. The remaining 2 pods continued running without interruption.
+
+<img width="644" height="181" alt="image" src="https://github.com/user-attachments/assets/58f0a1dd-6ad2-4796-87bc-4d3059688bd1" />
 
 ---
 
@@ -275,6 +292,7 @@ kubectl delete namespace dev staging production
 kubectl get namespaces
 kubectl get pods -A
 ```
+<img width="881" height="558" alt="image" src="https://github.com/user-attachments/assets/2d27c3ed-af1c-4020-9604-618383d906d2" />
 
 **Verify:** Only the four default Kubernetes namespaces remain (`default`, `kube-system`, `kube-public`, `kube-node-lease`). No custom pods visible anywhere.
 
